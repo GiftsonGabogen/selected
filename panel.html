@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Element Selector Panel</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="panel.js" defer></script>
+  </head>
+  <body class="p-4">
+    <div class="border-b">
+      <ul class="flex cursor-pointer">
+        <li class="mr-1">
+          <a
+            class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+            href="#"
+            id="single-tab"
+            >Single</a
+          >
+        </li>
+        <li class="mr-1">
+          <a
+            class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold"
+            href="#"
+            id="multiple-tab"
+            >Multiple</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div id="single-content">
+      <button
+        id="clear"
+        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Clear
+      </button>
+      <button
+        id="direct"
+        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Direct
+      </button>
+      <div class="mb-4">
+        <label
+          for="context-element"
+          class="inline-block text-gray-700 font-bold mb-2"
+        >
+          Context:
+        </label>
+        <input
+          id="context-element"
+          type="text"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div class="mb-4">
+        <label
+          for="reference-element"
+          class="inline-block text-gray-700 font-bold mb-2"
+        >
+          Reference:
+        </label>
+        <input
+          id="reference-element"
+          type="text"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div class="mb-4">
+        <label
+          for="main-element"
+          class="inline-block text-gray-700 font-bold mb-2"
+        >
+          Main Element:
+        </label>
+        <input
+          id="main-element"
+          type="text"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div class="mt-4">
+        <button
+          id="start-stop-button"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Start
+        </button>
+        <button
+          id="create-xpath"
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Create XPath
+        </button>
+        <input
+          id="xpath-result"
+          type="text"
+          class="mt-2 bg-gray-200 text-gray-800 border border-gray-300 rounded py-2 px-4 w-full"
+        />
+      </div>
+    </div>
+
+    <div id="multiple-content" class="hidden">
+      <div class="mb-4">
+        <label
+          for="multi-context-element"
+          class="block text-gray-700 font-bold mb-2"
+          >Context:</label
+        >
+        <input
+          id="multi-context-element"
+          type="text"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        <button
+          id="select-multi-context"
+          class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Select
+        </button>
+      </div>
+      <div class="mb-4">
+        <label
+          for="multi-parent-element"
+          class="block text-gray-700 font-bold mb-2"
+          >Parent:</label
+        >
+        <input
+          id="multi-parent-element"
+          type="text"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        <button
+          id="select-multi-parent"
+          class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Select
+        </button>
+      </div>
+      <div class="mb-4">
+        <label
+          for="multi-main-element"
+          class="block text-gray-700 font-bold mb-2"
+          >Main:</label
+        >
+        <input
+          id="multi-main-element"
+          type="text"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        <button
+          id="select-multi-main"
+          class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Select
+        </button>
+      </div>
+
+      <div id="exclude-section">
+        <label
+          for="exclude-element-0"
+          class="block text-gray-700 font-bold mb-2"
+          >Exclude:</label
+        >
+        <div class="mb-4 flex items-center">
+          <input
+            id="exclude-element-0"
+            type="text"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          <button
+            class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+      <button
+        id="add-exclude"
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Add More
+      </button>
+      <button
+        id="start-exclude-process"
+        class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Start
+      </button>
+      <button
+        id="clear-multiple"
+        class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Clear
+      </button>
+    </div>
+  </body>
+</html>
